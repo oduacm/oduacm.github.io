@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 8080,
-          base: '.',
+          base: './public',
           keepalive: true
         }
       }
@@ -16,5 +16,6 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-connect');
   // Default task(s).
+  grunt.registerTask('default',['connect']);
 
 };

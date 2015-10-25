@@ -27,10 +27,12 @@ The public site for Old Dominion University's Association for Computing Machiner
 ```bash
   npm install
 ```
-4. Run Grunt Connect
+4. Run Grunt
 ```bash
-  grunt connect
+  grunt
 ```
+
+5. Point your browser to [localhost:8080](http://localhost:8080)
 
 ### Author(s) of the README
 * [Joshua Harris](https://github.com/joshuajharris)

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang='en' ng-app='oduacm'>
+
+<head>
+  <link rel='stylesheet' href='lib/angular-material/angular-material.min.css' />
+  <link rel='stylesheet' href='lib/font-awesome/css/font-awesome.min.css' />
+
+  <link rel='stylesheet' href='css/style.css' />
+</head>
+
+<body ng-controller="MainCtrl">
+
+  <div style="width:100%;position:fixed !important;z-index:10000">
+    <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary md-icon-button" style='float:right'>
+      <md-icon md-font-icon="fa-bars" class="fa md-primary fa-2x" style='color: #FFF;'></md-icon>
+    </md-button>
+  </div>
+
+  <div id="hero">
+    <div class="header">
+      <h1 style="margin-bottom: 0px;">OLD DOMINION UNIVERSITY ACM</h1>
+      <md-button class="md-raised md-primary"><b>Learn More</b></md-button>
+      <md-button class="md-raised md-warn"><b>Get Involved</b></md-button>
+    </div>
+  </div>
+
+  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-toolbar class="md-warn">
+      <h1 class="md-toolbar-tools">ODU ACM User Panel</h1>
+    </md-toolbar>
+    <md-content ng-controller="RightCtrl" layout-padding>
+      <md-button class="md-raised md-primary">Login</md-button>
+      <md-button ng-click="close()" class="md-primary">
+        Close Sidenav Right
+      </md-button>
+    </md-content>
+  </md-sidenav>
+
+  <div>
+    <md-toolbar class="md-warn">
+      <div class="md-toolbar-tools">
+        <h2 class="md-flex">What is the ODU ACM?</h2>
+      </div>
+    </md-toolbar>
+    <md-content class='md-padding'>
+      <md-card>
+        <img ng-src="img/LHD15_2.jpg" class="md-card-image" alt="Washed Out">
+        <md-card-content>
+          <h2 class="md-title">Description</h2>
+          <p>
+            ACM is the world’s largest educational and scientific computing society uniting the world's computing educators, researchers and professionals to inspire dialogue, share resources and address the field's challenges. ACM strengthens the profession's collective
+            voice through strong leadership, promotion of the highest standards, and recognition of technical excellence. ACM supports the professional growth of its members by providing opportunities for life-long learning, career development, and professional
+            networking.
+          </p>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-content>
+          <h2 class="md-title">Officers</h2>
+          <p>
+            <div></div>
+          </p>
+        </md-card-content>
+      </md-card>
+    </md-content>
+  </div>
+
+  <footer>
+    <a href='https://www.github.com/oduacm' target='_blank'><i class='fa fa-github fa-3x'></i><a>
+    ODU ACM 2015
+  </footer>
+
+  <script src='lib/angular/angular.min.js'></script>
+  <script src='lib/angular-animate/angular-animate.min.js'></script>
+  <script src='lib/angular-aria/angular-aria.min.js'></script>
+  <script src='lib/angular-material/angular-material.min.js'></script>
+  <script src='lib/firebase/firebase.js'></script>
+  <script src='lib/angularfire/dist/angularfire.min.js'></script>
+
+  <script src='js/app.js'></script>
+</body>
+
+</html>

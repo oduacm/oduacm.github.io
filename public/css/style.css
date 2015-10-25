@@ -4,7 +4,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 #hero {
-  background-image: url('/img/splash.jpg');
+  background-image: url('/public/img/splash.jpg');
   background-size: cover;
   background-position: center;
   position: relative;

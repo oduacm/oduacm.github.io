@@ -1,42 +1,48 @@
-var app = angular.module('oduacm', ['ngMaterial']);
+var app = angular.module('oduacm', ['firebase', 'ngMaterial']);
 
-app.controller('MainCtrl', function($scope, $timeout, $mdSidenav, $log){
-  $scope.toggleRight = buildToggler('right');
-  $scope.isOpenRight = function(){
-    return $mdSidenav('right').isOpen();
-  };
-  /**
-   * Supplies a function that will continue to operate until the
-   * time is up.
-   */
-  function debounce(func, wait, context) {
-    var timer;
-    return function debounced() {
-      var context = $scope,
-          args = Array.prototype.slice.call(arguments);
-      $timeout.cancel(timer);
-      timer = $timeout(function() {
-        timer = undefined;
-        func.apply(context, args);
-      }, wait || 10);
-    };
-  }
-  function buildToggler(navID) {
-    return function() {
-      $mdSidenav(navID)
-        .toggle()
-        .then(function () {
-          $log.debug("toggle " + navID + " is done");
+app.factory('Auth', function($firebaseAuth) {
+  var endPoint = "https://oduacm.firebaseio.com/";
+  var usersRef = new Firebase(endPoint);
+  return $firebaseAuth(usersRef);
+});
+
+app.controller('MainCtrl', function($scope, Auth){
+
+  $scope.login = function(authMethod) {
+    Auth.$authWithOAuthRedirect(authMethod, {scope:"email"}).then(function(authData) {
+    }).catch(function(error) {
+      if (error.code === 'TRANSPORT_UNAVAILABLE') {
+        Auth.$authWithOAuthPopup(authMethod).then(function(authData) {
         });
+      } else {
+        console.log(error);
+      }
+    });
+  };
+
+  Auth.$onAuth(function(authData) {
+    if (authData === null) {
+      console.log('Not logged in yet');
+    } else {
+      console.log('Logged in as', authData.uid);
     }
+    // This will display the user's name in our view
+    $scope.authData = authData;
+  });
+
+  $scope.logout = function() {
+    Auth.$unauth();
   }
 });
 
-app.controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-  $scope.close = function () {
-    $mdSidenav('right').close()
-      .then(function () {
-        $log.debug("close RIGHT is done");
-      });
-  };
+app.controller('EventsCtrl', function($scope, $firebaseArray){
+  var endPoint = "https://oduacm.firebaseio.com/events";
+  var ref = new Firebase(endPoint);
+
+  $scope.events = $firebaseArray(ref);
+
+  $scope.events.$loaded().then(function(events){
+    console.log(events);
+  });
+
 });

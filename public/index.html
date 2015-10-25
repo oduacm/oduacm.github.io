@@ -2,6 +2,11 @@
 <html lang='en' ng-app='oduacm'>
 
 <head>
+  <meta charset="utf-8">
+  <meta name="description" content="Site for Old Dominion University Association for Computing Machinery">
+  <meta name="keywords" content="Old Dominion University, ODU, ACM, Association for Computing Machinery">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODU ACM</title>
   <link rel='stylesheet' href='lib/angular-material/angular-material.min.css' />
   <link rel='stylesheet' href='lib/font-awesome/css/font-awesome.min.css' />
 
@@ -11,32 +16,23 @@
 <body ng-controller="MainCtrl">
 
   <div style="width:100%;position:fixed !important;z-index:10000">
-    <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary md-icon-button" style='float:right'>
+    <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-raised md-primary md-icon-button" style='float:right'>
       <md-icon md-font-icon="fa-bars" class="fa md-primary fa-2x" style='color: #FFF;'></md-icon>
+    </md-button>
+    <md-button ng-click="login('google')" ng-hide="isOpenRight()" class="md-raised md-primary md-icon-button" style='float:right'>
+      <md-icon md-font-icon="fa-user" class="fa fa-2x" style='color: #FFF;'></md-icon>
     </md-button>
   </div>
 
   <div id="hero">
     <div class="header">
       <h1 style="margin-bottom: 0px;">OLD DOMINION UNIVERSITY ACM</h1>
-      <md-button class="md-raised md-primary"><b>Learn More</b></md-button>
-      <md-button class="md-raised md-warn"><b>Get Involved</b></md-button>
+      <md-button ng-href='#learnMore' class="md-raised md-primary"><b>Learn More</b></md-button>
+      <md-button ng-href='#getInvolved' class="md-raised md-warn"><b>Get Involved</b></md-button>
     </div>
   </div>
 
-  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-    <md-toolbar class="md-warn">
-      <h1 class="md-toolbar-tools">ODU ACM User Panel</h1>
-    </md-toolbar>
-    <md-content ng-controller="RightCtrl" layout-padding>
-      <md-button class="md-raised md-primary">Login</md-button>
-      <md-button ng-click="close()" class="md-primary">
-        Close Sidenav Right
-      </md-button>
-    </md-content>
-  </md-sidenav>
-
-  <div>
+  <div id="learnMore">
     <md-toolbar class="md-warn">
       <div class="md-toolbar-tools">
         <h2 class="md-flex">What is the ODU ACM?</h2>
@@ -63,10 +59,43 @@
         </md-card-content>
       </md-card>
     </md-content>
-  </div>
 
-  <footer>
-    <a href='https://www.github.com/oduacm' target='_blank'><i class='fa fa-github fa-3x'></i><a>
+    <div id='getInvolved' ng-cloak>
+      <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools">
+          <h2 class="md-flex">How to Get Involved</h2>
+        </div>
+      </md-toolbar>
+      <md-content class='md-padding'>
+        <md-card>
+          <!-- <img ng-src="img/LHD15_2.jpg" class="md-card-image" alt="Washed Out"> -->
+          <md-card-content>
+            <h2 class="md-title">Slack</h2>
+            <p>
+              The best way to get involved is to join our slack team. Request an invitation
+            </p>
+          </md-card-content>
+        </md-card>
+        <md-card ng-controller='EventsCtrl'>
+          <md-card-content>
+            <h2 class="md-title">Go to Events</h2>
+            <md-tabs md-dynamic-height md-border-bottom>
+              <md-tab ng-repeat='event in events' label="{{event.title}}">
+                <md-content class="md-padding">
+                  <h1 class="md-display-2">{{event.title}}</h1>
+                  <p>{{event.description}}</p>
+                  <md-button class="md-raised md-primary"><b>I'm Going</b></md-button>
+                  <md-button class="md-raised md-warn"><b>Cancel</b></md-button>
+                </md-content>
+              </md-tab>
+            </md-tabs>
+          </md-card-content>
+        </md-card>
+      </md-content>
+    </div>
+
+    <footer>
+      <a href='https://www.github.com/oduacm' target='_blank'><i class='fa fa-github fa-3x'></i><a>
     ODU ACM 2015
   </footer>
 

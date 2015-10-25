@@ -39,6 +39,8 @@ app.controller('EventsCtrl', function($scope, $firebaseObject, $firebaseArray) {
   var endPoint = "https://oduacm.firebaseio.com/events";
   var ref = new Firebase(endPoint);
 
+  $scope.isLoading = true;
+
   $scope.events = $firebaseArray(ref);
 
   $scope.joinEvent = function(id) {
@@ -87,7 +89,9 @@ app.controller('EventsCtrl', function($scope, $firebaseObject, $firebaseArray) {
   navigator.geolocation.getCurrentPosition(function(position) {
     console.log(position);
   });
-  // $scope.events.$loaded().then(function(events){
-  // });
+
+  $scope.events.$loaded().then(function(events){
+    $scope.isLoading = false;
+  });
 
 });

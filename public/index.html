@@ -58,8 +58,8 @@
       </md-card>
     </md-content>
 
-    <div id='getInvolved' ng-cloak>
-      <md-toolbar class="md-warn">
+    <div id='getInvolved'>
+      <md-toolbar class="md-primary">
         <div class="md-toolbar-tools">
           <h2 class="md-flex">How to Get Involved</h2>
         </div>
@@ -80,7 +80,12 @@
             <md-tabs md-dynamic-height md-border-bottom>
               <md-tab ng-repeat='event in events' label="{{event.title}}">
                 <md-content class="md-padding">
-                  <h1 class="md-display-2">{{event.title}}</h1>
+                  <h1 class="md-display-2">
+                    {{event.title}}<br/>
+                    <small>
+                      {{event.location.address}}, {{event.location.city}}, {{event.location.state}}, {{event.location.zip}}
+                    </small>
+                  </h1>
                   <p>{{event.description}}</p>
                   <md-button ng-click='joinEvent(event.$id)' class="md-raised md-primary"><b>I'm Going</b></md-button>
                   <md-button ng-click='cancelEvent(event.$id)' class="md-raised md-warn"><b>Cancel</b></md-button>

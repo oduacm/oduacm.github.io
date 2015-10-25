@@ -6,7 +6,8 @@ app.factory('Auth', function($firebaseAuth) {
   return $firebaseAuth(usersRef);
 });
 
-app.controller('MainCtrl', function($scope, Auth){
+app.controller('MainCtrl', function($scope, Auth, $mdSidenav){
+
   $scope.login = function(authMethod) {
     Auth.$authWithOAuthRedirect(authMethod, {scope:"email"}).then(function(authData) {
     }).catch(function(error) {
@@ -82,6 +83,10 @@ app.controller('EventsCtrl', function($scope, $firebaseObject, $firebaseArray) {
     })
   }
 
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+    console.log(position);
+  });
   // $scope.events.$loaded().then(function(events){
   // });
 

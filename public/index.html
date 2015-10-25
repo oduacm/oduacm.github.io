@@ -16,10 +16,7 @@
 <body ng-controller="MainCtrl">
 
   <div style="width:100%;position:fixed !important;z-index:10000">
-    <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-raised md-primary md-icon-button" style='float:right'>
-      <md-icon md-font-icon="fa-bars" class="fa md-primary fa-2x" style='color: #FFF;'></md-icon>
-    </md-button>
-    <md-button ng-click="login('google')" ng-hide="isOpenRight()" class="md-raised md-primary md-icon-button" style='float:right'>
+    <md-button ng-click="login('google')" class="md-icon-button md-primary md-raised" style='float:right'>
       <md-icon md-font-icon="fa-user" class="fa fa-2x" style='color: #FFF;'></md-icon>
     </md-button>
   </div>

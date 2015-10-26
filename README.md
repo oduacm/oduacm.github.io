@@ -32,5 +32,11 @@ The public site for Old Dominion University's Association for Computing Machiner
   grunt connect
 ```
 
+## Key Technologies
+* Angular
+* Angular Material
+* Firebase
+* Angular Fire
+
 ### Author(s) of the README
 * [Joshua Harris](https://github.com/joshuajharris)

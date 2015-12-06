@@ -31,8 +31,11 @@ The public site for Old Dominion University's Association for Computing Machiner
 ```bash
   grunt
 ```
-
-5. Point your browser to [localhost:8080](http://localhost:8080)
+## Key Technologies
+* Angular
+* Angular Material
+* Firebase
+* Angular Fire
 
 ### Author(s) of the README
 * [Joshua Harris](https://github.com/joshuajharris)

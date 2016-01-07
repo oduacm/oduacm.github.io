@@ -1,1 +1,14 @@
 /** Styles not associated with the theme **/
+.jumbotron {
+  background-image: url("../img/jumbotron_bg.jpg");
+  background-size: cover;
+  text-align: center;
+}
+
+.jumbotron h1 {
+  color: #FFF;
+}
+
+.alt-color {
+  color: #48cfad;
+}

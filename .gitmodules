@@ -1,0 +1,3 @@
+[submodule "hackathon2017"]
+	path = hackathon2017
+	url = git@github.com:oduacm/hackathon2017.git
